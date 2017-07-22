@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+<constant name="struts.enable.SlashesInActionNames" value="true"/>
+<constant name="struts.multipart.maxSize" value="104857600"></constant>  
+    <package name="default" namespace="/" extends="json-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+   
+    </package>
+    
+    
+    
+	<!-- 用户 -->
+	<package name="users" namespace="/users" extends="default">
+
+
+
+
+		<!-- 不跳转页面 （ajax返回json） -->
+		<action name="json_*" class="com.li.action.users.UsersAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">jsonDataMap</param>
+			</result>
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+		</action>
+
+		<!-- 不跳转页面（ ajax） -->
+		<action name="ajax_*" class="com.li.action.users.UsersAction"
+			method="{1}">
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+		</action>
+		<!-- 页面跳转 -->
+		<action name="jump_*" class="com.li.action.users.UsersAction"
+			method="{1}">
+			<result name="forward">
+				/users/{1}.jsp
+			</result>
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+		</action>
+
+
+
+
+
+
+
+
+
+
+
+	</package>
+
+
+	<!-- 后台管理人员 -->
+	<package name="admin" namespace="/admin" extends="default">
+		<!-- 下载文件 -->
+		<action name="*/download_*" class="com.li.action.admin.AdminAction"
+			method="{1}_{2}">
+			<result name="success" type="stream">
+<!-- 				指定文件下载类型 application/octet-stream默认值可以下载所有类型 -->
+				<param name="contentType">
+					${downloadInformation.contentType}
+				</param>
+<!-- 				指定下载的文件名和显示方式 ，但注意中文名的乱码问题，解决办法是：进行编码处理
+				contentDisposition是文件下载的处理方式，包括内联(inline)和附件(attachment)， 默认是inline, 
+					使用附件时这样配置：attachment;filename="文件名" 。 --> 
+				<param name="contentDisposition">
+					attachment;filename="${downloadInformation.fileName}"
+				</param>
+<!-- 				由getDownloadFile()方法获得inputStream -->
+				<param name="inputName">downloadInformation.inputStream</param>
+<!-- 				指定下载文件的缓存大小 -->
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+
+		<!-- 上传action （ajax/json） -->
+		<action name="upload_*" class="com.li.action.admin.AdminAction" method="{1}">
+			<result type="json">
+				<param name="root">jsonDataMap</param>
+<!-- 					<param name="contentType"> -->
+<!-- 					image/jpeg -->
+<!-- 				</param> -->
+			</result>
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+		</action>
+
+
+
+
+		<!-- 不跳转页面 （ajax） -->
+		<action name="*/ajax_*" class="com.li.action.admin.AdminAction"
+			method="{1}_{2}">
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+		</action>
+
+
+		<!-- 不跳转页面 （ajax返回json——） -->
+		<action name="*/json_*" class="com.li.action.admin.AdminAction"
+			method="{1}_{2}">
+			<result type="json">
+				<param name="root">jsonDataMap</param>
+			</result>
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+
+		</action>
+		<!-- 页面跳转 -->
+		<action name="*/jump_*" class="com.li.action.admin.AdminAction"
+			method="{1}_{2}">
+			<result name="forward">
+				/admin/{1}/{2}.jsp
+			</result>
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+		</action>
+	</package>
+
+	<!-- 公有 -->
+	<package name="common" namespace="/common" extends="default">
+
+		<!-- 用户登录 -->
+		<action name="login" class="com.li.common.action.CommonAction"
+			method="login">
+			<result name="success1" type="redirect">
+				/users/index.jsp
+
+			</result>
+
+
+			<result name="fail1" type="redirect">
+				/login.jsp
+			</result>
+
+			<result name="success2" type="redirect">
+				/admin/index.jsp
+
+			</result>
+
+
+		</action>
+		
+		<action name="download_*" class="com.li.common.action.CommonAction"
+			method="{1}">
+			<result name="success" type="stream">
+<!-- 				指定文件下载类型 application/octet-stream默认值可以下载所有类型 -->
+				<param name="contentType">
+					${downloadInformation.contentType}
+				</param>
+<!-- 				由getDownloadFile()方法获得inputStream -->
+				<param name="inputName">downloadInformation.inputStream</param>
+<!-- 				指定下载文件的缓存大小 -->
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		
+
+
+
+		<!-- 用户注销 -->
+		<action name="logout" class="com.li.common.action.CommonAction"
+			method="logout">
+			<result name="success" type="redirect">
+				/login.jsp
+			</result>
+
+		</action>
+
+
+		<!-- 不跳转页面 （ajax返回json） -->
+		<action name="null_json_*" class="com.li.common.action.CommonAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">jsonDataMap</param>
+			</result>
+			<interceptor-ref name="defaultStack">
+
+				<param name="exception.logEnabled">true</param>
+
+				<param name="exception.logLevel">error</param>
+
+			</interceptor-ref>
+
+		</action>
+
+
+
+
+	</package>
+
+    
+
+
+
+
+</struts>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>添加新管理员</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <style type="text/css">
+	
+	@font-face{
+				font-family: titie_1;
+					src:url(fonts/fanti_title.ttf);
+			}
+	  
+	  #contain{
+		  border:2px solid;
+border-radius:25px;
+-moz-border-radius:25px; /* Old Firefox */
+		  box-shadow: 10px 10px 5px #888888;
+	  }
+	</style>
+  <body>
+  	<div id="contain" class="container">
+  	
+  		<div class="row">
+  		<div class="col-sm-10 col-sm-offset-1">
+  					<div class="row">      
+       <div class="col-sm-6 col-sm-offset-3">
+       <font style="text-align:left;font-size:50px;font-family:titie_1;color: #e31510 ">添加新管理员</font>
+   
+       </div>
+    
+       
+       </div>
+ 
+       	<div class="row"> 
+
+       	<div class="col-sm-7">
+       	
+           
+                                    <table class="table table-bordered">
+                                        
+                                        <tbody>
+                                            <tr>
+                                                <td>姓名</td>
+                                                    <td><input type="text" class="form-control" id="ad_name" placeholder="输入姓名"></td>
+                                              
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>身份证</td>
+                                                   <td><input type="text" class="form-control" id="id_card" placeholder="身份证号码"></td>
+                                            
+                                            </tr>
+                                            <tr>
+                                                <td>账号</td>
+                                                <td>141111111</td>
+                                          
+                                            </tr>
+                                               <tr>
+                                                <td>密码</td>
+                                                <td><input type="text" class="form-control" id="newpasswd" placeholder="密码"></td>
+                                          
+                                            </tr>
+                                               <tr>
+                                                <td>状态：</td>
+                                                <td> <div class="btn-group">
+  <button class="btn btn-default  dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <font id="dropdownSelectText">激活</font> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+<!--	  <li><a onClick="">作者名</a></li>-->
+	  <li><a onClick="dropdownText(this)">停用</a></li>
+  </ul>
+</div></td>
+                                      
+                                            </tr>
+     
+                                        </tbody>
+                                    </table>
+                              
+                                
+                                
+
+                           
+       	</div>
+       	       	<div class="col-sm-5">
+       		<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 style="font-family: title_1" class="panel-title">照片</h3>
+  </div>
+  <div class="panel-body">
+  <div class="row">
+ <div class="col-xs-4 ">
+   <img  data-src="holder.js/96x128" alt="96*128" style="width: 96px; height: 128px;" src="images/頭像.png">
+	 </div>
+	 <div class="col-xs-5">
+  <input class="form-control" type="file">
+
+	 </div>
+	 
+	 
+	 	 <div class="col-xs-3">
+
+		 <a class="pull-right
+btn btn-primary" href="#" name="submit" ><i class="glyphicon glyphicon-ok
+			 "></i>提交</a>
+	 </div>
+  </div>
+  <div class="row">
+	  <div class="col-xs-12">
+		  <label class="label-control" style="align-content: center;color: #e31510">请上传96*128像素的照片</label>
+	  	
+	  </div>
+  	
+  </div>
+  </div>
+</div>
+       	</div>
+       	
+       	
+       	</div>
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+				         		<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 style="font-family: title_1" class="panel-title">权限管理</h3>
+  </div>
+  <div class="panel-body">
+					  <table class="table">
+                                        <thead>
+                                            <tr>
+                                             
+                                         
+                                                <th>书库管理</th>
+                                                <th>图书馆设置</th>
+                                                 <th>图书管理</th>
+                                                <th> 读者借阅数</th>
+                                                <th>读者管理</th>
+                                                <th>借阅管理</th>
+											
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                                                     <tr>
+                                                                
+                                         
+                                                
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                             <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                 
+                                            </tr>
+                                           
+                                        </tbody>
+                                    </table>
+									</div>
+					
+					
+				</div>
+				
+				
+			</div>
+  			
+  		</div>
+  		
+  		<div class="row" style="margin-bottom: 1%">
+  		<div class="col-sm-2 col-sm-offset-9">
+  			<a href="#" class="btn btn-lg btn-primary btn-block pull-right"><i class="glyphicon glyphicon-plus
+"></i>新建</a>
+  		
+  		</div>
+  		</div>	
+  			
+  		</div>
+  		
+  	</div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+		
+		//下拉js
+	  function dropdownText(as){
+		  var oldtext=as.text;
+		  var selectt=$("#dropdownSelectText");
+		  
+		  as.innerHTML=selectt.text();
+		  selectt.text(oldtext);
+	  }
+		  </script>
+	  
+  </body>
+</html>

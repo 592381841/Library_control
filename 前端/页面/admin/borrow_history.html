@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>借阅记录</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/datepicker.css" rel="stylesheet" media="screen">
+<style type="text/css">
+	  
+	  	  #contain{
+		  border:2px solid;
+border-radius:25px;
+-moz-border-radius:25px; /* Old Firefox */
+		  box-shadow: 10px 10px 5px #888888;
+		 
+	  }
+	@font-face{
+				font-family: titie_1;
+					src:url(fonts/fanti_title.ttf);
+			}
+	  
+	  
+	  </style>
+  </head>
+  <body>
+  	<div id="contain" class="container">
+  		<div class="row">
+  			
+						<div class="row">      
+       <div class="col-sm-6 col-sm-offset-4">
+       <font style="text-align:left;font-size:50px;font-family:titie_1;color: #e31510 ">借阅记录</font>
+   
+       </div>
+        </div>
+        	<div class="row"> 
+			<div class="col-sm-6 col-sm-offset-1"> 
+			  <table class="table bootstrap-admin-table-with-actions">
+			  <tbody>
+                                            <tr>
+                                                <td>起始时间：</td>
+                                                <td> <input class="form-control" type="text" name="" value id="begin_time_input">
+       </td>
+                                                <td>终止时间：</td>
+                                                <td> <input  class="form-control" type="text" name="" value id="end_time_input"></td>
+                                          
+                                      
+                                            </tr>
+                                          
+                                        </tbody>
+                                    </table> 
+			  </div>
+			    </div>
+        
+        
+			<div class="row"> 
+			<div class="col-sm-10 col-sm-offset-1">   
+			                                     <div class="col-xs-2">
+                           <div class="radio pull-left">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    <font class="radioText">全部</font>
+  </label>
+</div>
+             </div>
+             <div class="col-xs-2">
+              <div class="radio pull-left">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+  <font class="radioText"> 借书</font>
+  </label>
+</div>   
+           
+											   </div>
+											                <div class="col-xs-2">
+              <div class="radio pull-left">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+  <font class="radioText"> 还书</font>
+  </label>
+</div>   
+           
+											   </div>
+											   
+				</div>
+			</div>
+		
+			
+			<div class="row"> 
+			<div class="col-sm-10 col-sm-offset-1">    
+			
+			 
+			              <table class="table bootstrap-admin-table-with-actions">
+                                        <thead>
+                                            <tr>
+                                               <th>读者账号</th>
+                                               <th>读者名</th>
+                                                <th>书名</th>
+                                                <th>条形码号</th>
+                                               
+                                                
+                                                 <th>作者</th>
+                                                <th>出版社</th>
+                                                
+                                                <th>借期</th>
+                                                 <th>还期</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                              <td>145554125</td>
+                                               <td>张三是</td>
+												<td> <a href="borrow_book_info.html">马克思</a></td>
+                                              
+                                               
+                                                <td></td>
+                                                 <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                      
+                                            </tr>
+                                          
+                                        </tbody>
+                                    </table> 
+
+
+                                    </div>
+                                    </div>      
+  			
+  		</div>
+  		
+  	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.8.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+	  //此处为联动状态下的
+$(function(){
+
+  //订单时间input的日历控件
+      // disabling dates
+      
+     
+  
+     
+  
+      
+    var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+ 
+var checkin =  $("#begin_time_input").datepicker({
+  onRender: function(date) {
+    return date.valueOf() > now.valueOf() ? "disabled" : "";
+  },
+  format: "yyyy-mm-dd"
+}).on("changeDate", function(ev) {
+  
+  if (ev.date.valueOf() != now.valueOf()) { 
+        var newDate = new Date(ev.date)
+        newDate.setDate(newDate.getDate() + 1);
+            checkout.setValue(newDate);
+    
+  
+ }
+ 
+  checkin.hide();
+   $("#end_time_input")[0].focus();
+}).data("datepicker");
+var checkout = $("#end_time_input").datepicker({
+  onRender: function(date) {
+    return date.valueOf() >= checkin.date.valueOf() && date.valueOf() <= now.valueOf()? "" : "disabled" ;
+  },format: "yyyy-mm-dd"
+}).on("changeDate", function(ev) {
+  checkout.hide();
+}).data("datepicker");
+checkin.setValue(now);
+checkout.setValue(now);
+  }); 
+  
+	  
+	  
+	  </script>
+  </body>
+</html>

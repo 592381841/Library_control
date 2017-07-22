@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>分类搜索</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <style type="text/css">
+			@font-face{
+				font-family: titie_1;
+					src:url(fonts/fanti_title.ttf)
+			}
+		  
+		  
+		   #contain{
+		  border:2px solid;
+border-radius:25px;
+-moz-border-radius:25px; /* Old Firefox */
+		  box-shadow: 10px 10px 5px #888888;
+	  }
+		   #type{
+	
+		  box-shadow: 10px 10px 5px #888888;
+	  }
+		
+	  </style>
+  </head>
+  <body>
+  	<div class="container-fluid">
+  		<div class="row">
+  		<div  class="col-sm-4">
+  			    <div id="type" class="  panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="text-muted bootstrap-admin-box-title" style="font-family: titie_1;color: #e31510;font-size: 20px">分类</div>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                       
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td><a href="#">马列主义、毛泽东思</a></td>
+												<td><a href="#">马列主义、毛泽东思毛泽东思毛泽东思毛泽东思毛泽东思</a></td>
+												<td><a href="#"> 小说</a></td>
+                                            </tr>
+                                            <tr>
+												<td><a href="#">2</a></td>
+												<td><a href="#">Jacob</a></td>
+												<td><a href="#">Thornton</a></td>
+												<td><a href="#">@fat</a></td>
+                                            </tr>
+                                            <tr>
+												<td><a href="#">3</a></td>
+												<td><a href="#">Larry</a></td>
+												<td><a href="#">the Bird</a></td>
+												<td><a href="#">@twitter</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+  			
+  		</div>
+  		
+  		<div  class="col-sm-8">
+  		<div class="row">
+  		
+  		
+  		
+  			<ol  class="  breadcrumb">
+  <li><a href="#" style="font-family: titie_1;font-size: 20px">马克思</a></li>
+
+</ol>
+ 		       </div>
+ 		       <div id="contain" class="row">
+  		       <table class="table bootstrap-admin-table-with-actions">
+                                        <thead>
+                                            <tr>
+                                                <th>书名</th>
+                                                <th>条形码号</th>
+                                                <th>作者</th>
+                                                <th>书库/书架</th>
+                                                <th>出版社</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         
+                                            <tr>
+												<td><a href="#">书名fasdfasf速度发斯蒂芬</a></td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                                <td>sdfadfds</td>
+                                         
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                                            <nav style="text-align: right">
+  <ul id="list_page" class=" pagination  pagination-sm">
+
+  </ul>
+</nav>
+                                    
+                                    </div>
+  			
+  		</div>
+  			
+  			
+  		</div>
+  		
+  	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+	  
+//当页面加载时，默认为1（在JavaScript的最开始）
+var page=1;
+
+
+
+//分页   动态加载函数（pagecount为后台计算·的总页数）
+function loadPage(pagecount){
+
+	var begin;
+	pageCount=pagecount
+	var end;
+	$("#list_page").append("<li id='firstPage'><a  href='javascript:void(0)' onclick='pageClick(this)'>首页</a></li>");
+	$("#list_page").append(" <li><a    href='javascript:void(0)' onclick='pageClick(this)'>尾页</a></li>");
+	if(pageCount>1&&page!=pageCount){
+	$("#firstPage").after(" <li><a href='javascript:void(0)' onclick='pageClick(this)'>下一页</a></li>");
+
+	}
+	if(pageCount<=5){
+		begin=1;
+		end=pageCount;
+	}
+	else{
+			begin=page-2;
+			end=page+2;
+	
+		if(begin<=0){
+			begin=1;
+			end=5;
+		}
+		else if(end>pageCount){
+			end=pageCount;
+			begin=pageCount-4;
+			
+		}
+	}
+	for(;begin<=end;end--){
+	if(end==page){
+	$("#firstPage").after(" <li class='active'><a href='javascript:void(0)' onclick='pageClick(this)'>"+end+"</a></li>");
+	
+	}
+	else{
+	$("#firstPage").after(" <li><a href='javascript:void(0)' onclick='pageClick(this)'>"+end+"</a></li>");
+	}
+}
+
+	if(pageCount>1&&page!=1){
+	$("#firstPage").after(" <li><a href='javascript:void(0)' onclick='pageClick(this)'>上一页</a></li>");
+	}
+		
+}
+
+
+//为分页栏按钮添加事件
+
+function pageClick(e){
+	var pageButton=e.text;
+	if(pageButton=="首页"){
+			page=1;
+		}
+	else if(pageButton=="尾页"){
+		page=pageCount
+	
+		}
+	else if(pageButton=="下一页"){
+			page+=1;
+	}
+	else if(pageButton=="上一页"){
+				page-=1;
+	}
+	else{
+		page=Number(e.text);
+			
+		}
+	
+ 	 $.ajax({
+                cache: false,
+                type: "GET",
+                url:"<c:url value='/hospital/null_ajax_medicine_search.action'/>?page="+page,
+                async:true,
+                success:function (data){
+                load_medicine_list(data);
+                }
+            });
+};
+
+
+
+//当点击加载页面按钮，则加载分页栏
+$(function(){
+loadPage(10);
+	}); 
+
+	  
+	  
+	  
+	  
+	  </script>
+  </body>
+</html>

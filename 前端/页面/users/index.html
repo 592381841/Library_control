@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>主页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap Docs -->
+<!--        <link href="http://getbootstrap.com/docs-assets/css/docs.css" rel="stylesheet" media="screen">-->
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" media="screen" href="css/bootstrap.min.css">
+<!--        <link rel="stylesheet" media="screen" href="css/bootstrap-theme.min.css">-->
+
+        <!-- Bootstrap Admin Theme -->
+<!--        <link rel="stylesheet" media="screen" href="css/bootstrap-admin-theme.css">-->
+<!--        <link rel="stylesheet" media="screen" href="css/bootstrap-admin-theme-change-size.css">-->
+
+        <!-- Custom styles -->
+        <style type="text/css">
+			@font-face{
+				font-family: titie_1;
+					src:url(fonts/fanti_title.ttf)
+			}
+			body{
+				padding-top: 0px;
+			}
+            @font-face {
+                font-family: Ubuntu;
+                src: url('fonts/Ubuntu-Regular.ttf');
+            }
+			
+            .bs-docs-masthead{
+                background-color: #6f5499;
+                background-image: linear-gradient(to bottom, #563d7c 0px, #6f5499 100%);
+                background-repeat: repeat-x;
+            }
+            .bs-docs-masthead{
+                padding: 0;
+            }
+            .bs-docs-masthead h1{
+                color: #fff;
+                font-size: 40px;
+                margin: 0;
+                padding: 34px 0;
+                text-align: center;
+            }
+            .bs-docs-masthead a:hover{
+                text-decoration: none;
+            }
+            .meritoo-logo a{
+                background-color: #fff;
+                border: 1px solid rgba(66, 139, 202, 0.4);
+                display: block;
+                font-family: Ubuntu;
+                padding: 22px 0;
+                text-align: center;
+            }
+            .meritoo-logo a,
+            .meritoo-logo a:hover,
+            .meritoo-logo a:focus{
+                text-decoration: none;
+            }
+            .meritoo-logo a img{
+                display: block;
+                margin: 0 auto;
+            }
+            .meritoo-logo a span{
+                color: #4e4b4b;
+                font-size: 18px;
+            }
+            .row-urls{
+                margin-top: 4px;
+            }
+            .row-urls .col-md-6{
+                text-align: center;
+            }
+            .row-urls .col-md-6 a{
+                font-size: 14px;
+            }
+			.nav-child:hover{
+				background-color: #15B8CF;
+			}
+        </style>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+           <script type="text/javascript" src="js/html5shiv.js"></script>
+           <script type="text/javascript" src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+				<div class="container-fluid" style="background-color: #DFF3FE"> 
+      			<div class="row">      
+       <div class="col-lg-4" style="text-align:left;font-size:50px;font-family:titie_1; "><font style="color: #e31510 ">灵魂图书馆</font>
+       </div>
+       
+             <div style="align-content: " class="col-lg-8">
+                        <div class="collapse navbar-collapse">
+                     
+                            <ul class="nav navbar-nav navbar-right ">
+                                
+                                <li class="nav-child">
+                                    <a href="#" ><font>修改密码</font> <i class="glyphicon glyphicon-pencil"></i></a>
+                                </li>
+                                  <li class="nav-child">
+                                    <a href="#"  ><font>退出登录 </font><i class="glyphicon glyphicon-share-alt"></i></a>
+                                </li>
+                                <li class="nav-child">
+                                    <a href="#" ><font>用户名</font> <i class="glyphicon glyphicon-user"></i></a>
+                                </li>
+                              
+                       
+                            </ul>
+                        </div>
+                    </div>
+       </div>
+       </div>
+
+       
+  
+
+        <!-- main / large navbar -->
+        <nav class="navbar navbar-default navbar-inverse  bootstrap-admin-navbar" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-navbar-collapse">
+                                <span class="sr-only"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="about.html">目录检索</a>
+                             <a class="navbar-brand" href="about.html">分类检索</a>
+                        </div>
+                        <div class="collapse navbar-collapse main-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">分类导航</a></li>
+                               
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-hover="dropdown">图书借阅 <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        
+                                        <li><a href="#">当前图书借阅情况</a></li>
+                                        <li><a href="#">借阅到期提醒</a></li>
+                                        <li><a href="#">我的借书历史</a></li>
+<!--
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="presentation" class="divider"></li>
+                                        <li role="presentation" class="dropdown-header">Dropdown header</li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li><a href="#">One more separated link</a></li>
+-->
+                                    </ul>
+                                </li>
+                                 <li><a href="#">图书卡挂失/开通</a></li>
+                                 <li><a href="#">个人信息</a></li>
+                                 <li><a href="#">图书馆简介</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </div>
+            </div><!-- /.container -->
+        </nav>
+
+        <div class="container">
+            <!-- left, vertical navbar & content -->
+            <div class="row">
+                <!-- left, vertical navbar -->
+                <!-- left, vertical navbar -->
+                <!--
+                <div class="col-md-2 bootstrap-admin-col-left">
+                    <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+                        <li class="active">
+                            <a href="about.html"><i class="glyphicon glyphicon-chevron-right"></i> About</a>
+                        </li>
+                        <li>
+                            <a href="dashboard.html"><i class="glyphicon glyphicon-chevron-right"></i> Dashboard</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Calendar</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Statistics (Charts)</a>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="glyphicon glyphicon-chevron-right"></i> Forms</a>
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="glyphicon glyphicon-chevron-right"></i> Tables</a>
+                        </li>
+                        <li>
+                            <a href="buttons-and-icons.html"><i class="glyphicon glyphicon-chevron-right"></i> Buttons &amp; Icons</a>
+                        </li>
+                        <li>
+                            <a href="wysiwyg-editors.html"><i class="glyphicon glyphicon-chevron-right"></i> WYSIWYG Editors</a>
+                        </li>
+                        <li>
+                            <a href="ui-and-interface.html"><i class="glyphicon glyphicon-chevron-right"></i> UI &amp; Interface</a>
+                        </li>
+                        <li>
+                            <a href="error-pages.html"><i class="glyphicon glyphicon-chevron-right"></i> Error pages</a>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="glyphicon glyphicon-chevron-down"></i> Submenu</a>
+                            <ul class="nav navbar-collapse bootstrap-admin-navbar-side">
+                                <li><a href="about.html"><i class="glyphicon glyphicon-chevron-right"></i> Submenu 1</a></li>
+                                <li><a href="about.html"><i class="glyphicon glyphicon-chevron-right"></i> Submenu 2</a></li>
+                                <li><a href="about.html"><i class="glyphicon glyphicon-chevron-right"></i> Submenu 3</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">731</span> Orders</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">812</span> Invoices</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">27</span> Clients</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">1,234</span> Users</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">2,221</span> Messages</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">11</span> Reports</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">83</span> Errors</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="badge pull-right">4,231</span> Logs</a>
+
+                        </li>
+                    </ul>
+                </div>
+-->
+
+                <!-- content -->
+                <div class="col-md-10 col-md-offset-1">
+ <iframe name="iframe1" id="frame1" style="zoom: 0.8;" height="1000" src="black.html" frameBorder="0" width="100%"></iframe>
+            
+
+           
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="navbar navbar-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <footer role="contentinfo">
+                            <p align="center" class="center">cjy制作 &copy; 2017</p>
+                            
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/twitter-bootstrap-hover-dropdown.min.js"></script>
+<!--        <script type="text/javascript" src="js/bootstrap-admin-theme-change-size.js"></script>-->
+    </body>
+</html>

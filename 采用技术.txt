@@ -1,0 +1,4 @@
+本系统
+采用三层分层结构
+使用Struts+spring+hibernate三大框架
+前端页面 使用jQuery+ajax+JavaScript+bootstrap

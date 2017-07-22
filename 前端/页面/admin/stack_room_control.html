@@ -1,0 +1,130 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>书库管理</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	  
+	  	  #contain{
+		  border:2px solid;
+border-radius:25px;
+-moz-border-radius:25px; /* Old Firefox */
+		  box-shadow: 10px 10px 5px #888888;
+		 
+	  }
+	@font-face{
+				font-family: titie_1;
+					src:url(fonts/fanti_title.ttf);
+			}
+	  
+	  
+	  </style>
+  </head>
+  <body>
+  	<div id="contain" class="container-fluid">
+  		<div class="row">
+  			
+						<div class="row">      
+       <div class="col-sm-4 col-sm-offset-4">
+       <font style="text-align:left;font-size:50px;font-family:titie_1;color: #e31510 ">书库管理</font>
+   
+       </div>
+        </div>
+			<div class="row"> 
+			<div class="col-sm-6 col-sm-offset-3">    
+			  <table class="table table-bordered">
+                                        <thead>
+                                        	<tr>
+                                        		<th>书库名</th>
+                                        		<th>地址</th>
+
+                                        		<th>操作</th>
+                                        	</tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            <td><input type="text" class="form-control" id="" placeholder=" 请输入书库名"></td>
+                                            <td><input type="text" class="form-control" id="" placeholder=" 请输入 书库地址"></td>
+											<td><a href="#" class="btn btn-primary "> <i class="glyphicon glyphicon-plus"></i>添加新书库</a></td>
+											</tr>
+											
+											</tbody>
+				</table>	
+			
+			
+				</div>
+			</div>
+			
+			<div class="row"> 
+			<div class="col-sm-10 col-sm-offset-1">     
+			
+			           <table class="table table-bordered">
+                                        <thead>
+                                        	<tr>
+                                        		<th>编号</th>
+                                        		<th>书库名</th>
+                                        		<th>地址</th>
+                                        		<th>书架数</th>
+												<th>藏书数</th>
+                                        		<th>操作</th>
+                                        	</tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                    <td>12</td>
+                                              
+                                               <td><input type="text" class="form-control" id="" placeholder=" 请输入数量"></td>
+                                                <td><input type="text" class="form-control" id="" placeholder=" 请输入数量"></td>
+                                                  <td>12</td>
+                                                    <td>12</td>
+                                                <td class="actions">
+                                                    <a href="#">
+                                                        <button class="btn btn-sm btn-primary">
+                                                            <i class="glyphicon glyphicon-pencil"></i>
+                                                            修改
+                                                        </button>
+                                                    </a>
+                                                          <a href="#">
+                                                        <button class="btn btn-sm btn-danger">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                            删除
+                                                        </button>
+                                                    </a>
+                                                          <a href="bookrack_control.html" target="_blank">
+                                                        <button class="btn btn-sm btn-primary">
+                                                            <i class="glyphicon glyphicon-zoom-in"></i>
+                                                            详情
+                                                        </button>
+                                                    </a>
+												</td>
+                                                
+                                            </tr>
+                                                
+                                              
+                                  
+     
+                                        </tbody>
+                                    </table>
+
+
+                                    </div>
+                                    </div>   
+
+  			
+  		</div>
+  		
+  	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Library</display-name>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+
+  </welcome-file-list>
+  
+  
+    <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  	
+  </listener>
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath:spring-config.xml</param-value>
+  </context-param>
+  
+  <filter>
+  <filter-name>BaseFilter</filter-name>
+  <filter-class>com.li.common.filter.BaseFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>BaseFilter</filter-name>
+  <url-pattern>/login.jsp</url-pattern>
+  <url-pattern>/users/index.jsp</url-pattern>
+  <url-pattern>/admin/index.jsp</url-pattern>
+  </filter-mapping>
+  
+    <filter>
+  <filter-name>LoginFilter</filter-name>
+  <filter-class>com.li.common.filter.LoginFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>LoginFilter</filter-name>
+  <url-pattern>/login.jsp</url-pattern>
+  </filter-mapping>
+  
+  
+    <filter>
+  <filter-name>ReaderFilter</filter-name>
+  <filter-class>com.li.common.filter.ReaderFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>ReaderFilter</filter-name>
+  <url-pattern>/users/*</url-pattern>
+  </filter-mapping>
+   
+        <filter>
+  <filter-name>LiSettingFilter</filter-name>
+  <filter-class>com.li.common.filter.admin.LiSettingFilter</filter-class>
+  
+  </filter>
+ 
+ 
+  <filter-mapping>
+  <filter-name>LiSettingFilter</filter-name>
+  <url-pattern>/admin/li_setting/*</url-pattern>
+  </filter-mapping>
+  
+     <filter>
+  <filter-name>BorrowControlFilter</filter-name>
+  <filter-class>com.li.common.filter.admin.BorrowControlFilter</filter-class>
+  
+  </filter>
+  
+  <filter-mapping>
+  <filter-name>BorrowControlFilter</filter-name>
+  <url-pattern>/admin/readType_control/*</url-pattern>
+  </filter-mapping>
+  
+       <filter>
+  <filter-name>ReaderTypeControlFilter</filter-name>
+  <filter-class>com.li.common.filter.admin.ReaderTypeControlFilter</filter-class>
+  
+  </filter>
+  
+  <filter-mapping>
+  <filter-name>ReaderTypeControlFilter</filter-name>
+  <url-pattern>/admin/borrow_control/*</url-pattern>
+  </filter-mapping>
+  
+  
+          <filter>
+  <filter-name>ManagerControlFilter</filter-name>
+  <filter-class>com.li.common.filter.admin.ManagerControlFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>ManagerControlFilter</filter-name>
+  <url-pattern>/admin/manager_control/*</url-pattern>
+ 
+  </filter-mapping>
+  
+  
+            <filter>
+  <filter-name>StackRoomControlFilter</filter-name>
+  <filter-class>com.li.common.filter.admin.StackRoomControlFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>StackRoomControlFilter</filter-name>
+  <url-pattern>/admin/stack_room_control/*</url-pattern>
+   <url-pattern>/admin/book_control/*</url-pattern>
+  </filter-mapping>
+  
+            <filter>
+  <filter-name>ReaderControlFilter</filter-name>
+  <filter-class>com.li.common.filter.admin.ReaderControlFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>ReaderControlFilter</filter-name>
+  <url-pattern>/admin/reader_control/*</url-pattern>
+ 
+  </filter-mapping>
+  
+  
+  
+      <filter>
+  <filter-name>AdminFilter</filter-name>
+  <filter-class>com.li.common.filter.AdminFilter</filter-class>
+  
+  </filter>
+  <filter-mapping>
+  <filter-name>AdminFilter</filter-name>
+  <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  
+ 
+<filter>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+<!--若是/*的话则可让所有请求都经过该过滤器进行hibernate的session处理
+而.action与control/action层保持一致，是使得经过该层的servlet的同时进入该过滤器
+由于过滤器的先进后出性质，必须把该过滤器放置在struts或者springmvc之前-->
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+  
+  
+      <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+</web-app>

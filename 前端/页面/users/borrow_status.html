@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>当前图书借阅情况</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <style type="text/css">
+	 
+			@font-face{
+				font-family: titie_1;
+					src:url(fonts/fanti_title.ttf)
+			}
+	</style>
+  <body>
+  	<div class="container-fluid">
+  		<div class="row">
+  			    <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="text-muted bootstrap-admin-box-title" style="font-family:titie_1 ">当前图书借阅情况</div>
+                                </div>
+                                <div class="bootstrap-admin-panel-content">
+                                    <table class="table bootstrap-admin-table-with-actions">
+                                        <thead>
+                                            <tr>
+                                               <th><input type="checkbox" onchange="checkbox_Id_allChange()"  /></th>
+                                                <th>书名</th>
+                                                <th>条形码号</th>
+                                               
+                                                <th>图书类型</th>
+                                                 <th>作者</th>
+                                                <th>出版社</th>
+                                                <th>借期</th>
+                                                 <th>还期</th>
+                                                 <th >操作</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                             
+                                                    <tr>
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                 <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                      			  <td class="actions">
+                                                    <a href="#">
+                                                        <button class="btn btn-sm btn-primary">
+                                                            <i class="glyphicon glyphicon-time
+"></i>
+                                                           续借
+                                                        </button>
+                                                    </a>
+                                                   
+                                                
+                                                </td>
+                                            </tr>
+                                            
+                                                    <tr>
+                                               <td><input type="checkbox" class="checkbox_Id_list" /></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                 <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                      			  <td class="actions">
+                                                    <a href="#">
+                                                        <button class="btn btn-sm btn-primary">
+                                                            <i class="glyphicon glyphicon-time
+"></i>
+                                                           续借
+                                                        </button>
+                                                    </a>
+                                                   
+                                                
+                                                </td>
+                                            </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+  			
+  		</div>
+  		
+  	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+		function checkbox_Id_allChange(){
+	var list=$(".checkbox_Id_list");
+
+	for(var i=0;i<list.length;i++){
+	//直接使用js
+		if(	list[i].checked==false){
+			list[i].checked=true;
+		}
+		else{
+			list[i].checked=false;
+		}
+
+
+}
+};
+	  </script>
+  </body>
+</html>

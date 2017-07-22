@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+		
+			<bean id="CommonDao" class="com.li.common.dao.CommonDaoImpl"
+		p:sessionFactory-ref="sessionFactory">
+
+	</bean>
+	<bean id="commonService" class="com.li.common.service.CommonServiceImpl">
+		<property name="commonDao">
+			<ref bean="CommonDao" />
+		</property>
+	</bean>
+	<import resource="spring-admin-config.xml" />
+	<import resource="spring-users-config.xml" />
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+					<!--可更改数据库连接池-->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/librarysys?characterEncoding=utf-8">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123"></property>
+		<!--连接池的最小个数-->
+		<property name="initialSize" value="10"></property>
+<!--连接池的最大个数-->
+		<property name="maxTotal" value="50"></property>
+<!--连接池的允许空闲连接最大个数-->
+		<property name="maxIdle" value="30"></property>
+<!--连接池的允许空闲连接最大个数-->
+		<property name="minIdle" value="20"></property>
+<!--连接池中空闲连接允许停留的时间-->
+		<property name="timeBetweenEvictionRunsMillis" value="6000">
+		
+</property>
+	<!--数值越大与数据库交互越不频繁-->
+		<property name="minEvictableIdleTimeMillis" value="18000">
+		
+</property>	
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">
+					true
+				</prop>
+			</props>
+		</property>	
+		
+<!--映射文件-->
+<!-- <property name="mappingLocations"> -->
+<!-- 			<list><value>classpath:com/li/common/domain/*.hbm.xml</value></list> -->
+<!-- 		</property>	 -->
+
+<!-- 使用注解方式配置domian -->
+
+
+  <property name="packagesToScan" value="com.li.common.domain.">
+			</property>  
+			
+
+
+
+
+ 
+	</bean>
+	<!-- 增删改的时候需要开启事务-->
+<!-- 事务代理器的基类:提供事务模板-->
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory">
+	</bean>
+	<!--注解驱动  若spring基于注解配置-->
+	<!--<tx:annotation-driven transaction-manager="transactionManager" /> -->
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+<!--具体过滤哪些方法,哪些类需要加上事务-->
+	
+<aop:config>
+	<!--expression中过滤  第一个*好代表所有的返回类型 然后是包路径两个点号（“..”）表示所有路径  
+com.s2sh..bo.*Bo.tx*(..) 表示com.s2sh下所有路径的bo包中，以Bo为后缀的类中，以tx开头任意参数的的方法-->	
+		<aop:pointcut expression="execution(* com.li.service..*ServiceImpl.tx*(..))" id="interceptorPointCuts"/>
+<!-- 			<aop:pointcut expression="execution(* com.li..service..*ServiceImpl.tx*(..))" id="interceptorPointCuts"/> -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="interceptorPointCuts"/>
+	</aop:config>
+</beans>
